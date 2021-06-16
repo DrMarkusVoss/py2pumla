@@ -3,6 +3,11 @@
 from inspect import isclass
 
 def huhu():
+    """some example function with an external module dependency."""
+    print("is class? " + isclass(PElement))
+
+def haha(anargument):
+    """another example function with an external module dependency."""
     print("is class? " + isclass(PElement))
 
 class PElement:
