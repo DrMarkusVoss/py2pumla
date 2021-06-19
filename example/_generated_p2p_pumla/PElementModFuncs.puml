@@ -1,0 +1,21 @@
+'PUMLAMR
+@startuml
+!include /Users/mvoss/Desktop/git/github/pumla/pumla_macros.puml
+!include modelrepo_json.puml
+
+!if ($PUMVarShowBody)
+class "Module PElement Functions" as PElementModFuncs <<Python>> <<module>>   {
+	+huhu()
+	+haha(anargument)
+}
+
+!if ($PUMVarShowDescr)
+note left of PElementModFuncs::huhu
+some example function with an external module dependency.
+end note
+note left of PElementModFuncs::haha
+another example function with an external module dependency.
+end note
+!endif
+@enduml
+

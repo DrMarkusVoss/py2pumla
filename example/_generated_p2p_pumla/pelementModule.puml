@@ -1,0 +1,23 @@
+'PUMLAMR
+@startuml
+!include /Users/mvoss/Desktop/git/github/pumla/pumla_macros.puml
+!include modelrepo_json.puml
+
+!if ($PUMVarShowBody)
+package "./example/PElement.py" as pelementModule <<Python>> { 
+	PUMLAPutInternalElement(pelementClass)
+	PUMLAPutInternalElement(PElementModFuncs)
+}
+
+PUMLARelation(pelementModule, "..>", pelementClass, "contains", "REL#pelementModule_CONTAINS_pelementClass")
+PUMLARelation(pelementModule, "..>", PElementModFuncs, "contains", "REL#pelementModule_CONTAINS_PElementModFuncs")
+PUMLARelation(pelementModule, "..>", inspect, "uses: isclass", "REL#pelementModule_USES_isclass_FROM_inspect")
+
+
+!if ($PUMVarShowDescr)
+note bottom of pelementModule
+	 PElement module contains only the PElement class
+end note
+!endif
+@enduml
+

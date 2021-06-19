@@ -1,0 +1,67 @@
+'PUMLAMR
+@startuml
+!include /Users/mvoss/Desktop/git/github/pumla/pumla_macros.puml
+!include modelrepo_json.puml
+
+!if ($PUMVarShowBody)
+class "PElement" as pelementClass <<Python>> <<class>> { 
+	+__init__(self)
+	+addStereotype(self, st)
+	+getAlias(self)
+	+getFilename(self)
+	+getInstanceClassAlias(self)
+	+getKind(self)
+	+getName(self)
+	+getParent(self)
+	+getPath(self)
+	+getStereotypes(self)
+	+getType(self)
+	+printMe(self, sts, i)
+	+setAlias(self, alias)
+	+setFilename(self, filename)
+	+setInstance(self)
+	+setInstanceClassAlias(self, ic)
+	+setKindDynamic(self)
+	+setKindStatic(self)
+	+setName(self, name)
+	+setParent(self, parent)
+	+setPath(self, path)
+	+setType(self, type)
+!endif
+}
+
+!if ($PUMVarShowDescr)
+note left of pelementClass::__init__
+ init every attribute with '-' as default, nothing more 
+end note
+
+note left of pelementClass::printMe
+ command line print out of the model element attributes 
+end note
+
+note left of pelementClass::setAlias
+ setter for 'alias' 
+end note
+
+note left of pelementClass::setFilename
+ setter for 'filename' 
+end note
+
+note left of pelementClass::setName
+ setter for 'name' 
+end note
+
+note left of pelementClass::setParent
+ setter for 'parent' 
+end note
+
+note left of pelementClass::setPath
+ setter for 'path' 
+end note
+
+note bottom of pelementClass
+	 class describing an atomic PUMLA model element 
+end note
+!endif
+
+@enduml

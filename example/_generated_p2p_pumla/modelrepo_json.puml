@@ -1,0 +1,10 @@
+!$allelems = {"modelrepopath": "/Users/mvoss/Desktop/git/github/py2pumla/example/_generated_p2p_pumla", "modelrepofile": "./modelrepo_json.puml", "elements": [{"name": "Module PElement Functions", "alias": "PElementModFuncs", "type": "class", "stereotypes": ["Python", "module"], "kind": "static", "parent": "-", "instclassalias": "-", "path": "./", "filename": "PElementModFuncs.puml"},
+ {"name": "PElement", "alias": "pelementClass", "type": "class", "stereotypes": ["Python", "class"], "kind": "static", "parent": "-", "instclassalias": "-", "path": "./", "filename": "pelementClass.puml"},
+ {"name": "pelementModule", "alias": "pelementModule", "type": "PUMLARelation(", "stereotypes": ["Python"], "kind": "static", "parent": "-", "instclassalias": "-", "path": "./", "filename": "pelementModule.puml"}]}
+
+!$allrelations = {"modelrelationrepopath": "/Users/mvoss/Desktop/git/github/py2pumla/example/_generated_p2p_pumla", "modelrelationrepofile": "./modelrepo_json.puml", "relations": [{"id": "REL#pelementModule_CONTAINS_pelementClass", "start": "pelementModule", "end": "pelementClass", "reltype": "..>", "reltxt": "contains", "path": "./", "filename": "pelementModule.puml"},
+ {"id": "REL#pelementModule_CONTAINS_PElementModFuncs", "start": "pelementModule", "end": "PElementModFuncs", "reltype": "..>", "reltxt": "contains", "path": "./", "filename": "pelementModule.puml"},
+ {"id": "REL#pelementModule_USES_isclass_FROM_inspect", "start": "pelementModule", "end": "inspect", "reltype": "..>", "reltxt": "uses: isclass", "path": "./", "filename": "pelementModule.puml"}]}
+
+!$allconnections = {"modelconnectionrepopath": "/Users/mvoss/Desktop/git/github/py2pumla/example/_generated_p2p_pumla", "modelconnectionrepofile": "./modelrepo_json.puml", "connections": []}
+

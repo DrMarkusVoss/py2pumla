@@ -59,7 +59,7 @@ def createClassPUMLCode(classelement, targetpath):
         if ((not ("__" in me)) or (me == "__init__")):
             me_raw = classelement.__dict__[me]
             if not(me_raw.__doc__ == None):
-                ltw = ltw + "note right of " + ce_alias + "::" + me + "\n"
+                ltw = ltw + "note left of " + ce_alias + "::" + me + "\n"
                 ltw = ltw + str(me_raw.__doc__) + "\n"
                 ltw = ltw + "end note\n\n"
 
@@ -100,7 +100,7 @@ def createModuleFunctionsPUMLCode(module, modulefuncs, targetpath):
     for me in modulefuncs:
         if ((not ("__" in me.__name__)) or (me.__name__ == "__init__")):
             if not(me.__doc__ == None):
-                ltw = ltw + "note right of " + modfunc_name + "::" + me.__name__ + "\n"
+                ltw = ltw + "note left of " + modfunc_name + "::" + me.__name__ + "\n"
                 ltw = ltw + str(me.__doc__) + "\n"
                 ltw = ltw + "end note\n"
 
@@ -129,6 +129,10 @@ def createModulePUMLCore(module, filename, list_of_elementalias, mymod_func, mym
         ltw = ltw + "\tPUMLAPutInternalElement(" + e + ")\n"
 
     ltw = ltw + "}\n\n"
+
+    for el in list_of_elementalias:
+        relalias = "REL#" + me_alias + "_CONTAINS_" + el
+        ltw = ltw + 'PUMLARelation(' + me_alias + ', "..>", ' + el + ', "contains", "' + relalias + '")\n'
 
     ltw = ltw + mymod_uses + "\n\n"
 
@@ -160,9 +164,12 @@ def py2pumla(fname, targetpath):
     #os.chdir(os.path.commonpath()fullname.)
     spec = spec_from_file_location(modulename, fullname)
     mod = module_from_spec(spec)
+    #print("exec mod " + str(mod))
     spec.loader.exec_module(mod)
     d = mod.__dict__
     keys = d.keys()
+    #print("after exec")
+    #print(keys)
     mod_els = []
     module_element_alias = []
     module_funcs = []
@@ -218,7 +225,7 @@ def findPythonFiles(path):
     pythonfiles = []
     blacklist = []
 
-    blacklistfilename = path + "/pumla_blacklist.txt"
+    blacklistfilename = path + "/py2pumla_blacklist.txt"
     #print(blacklistfilename)
     if (os.path.isfile(blacklistfilename)):
         #print("blacklist found\n")
@@ -243,6 +250,7 @@ def findPythonFiles(path):
     return pythonfiles
 
 def executePumla(gendir):
+    #print("execute pumla")
     cmd = "python3 " + pumla_path + "/pumla.py update"
     oldpath = os.path.abspath(os.curdir)
     os.chdir(gendir)
@@ -252,6 +260,7 @@ def executePumla(gendir):
 def createAllElementsOverview(pumpath, targetpath):
     dtxt = "@startuml\n!include modelrepo_json.puml\n"
     dtxt = dtxt + "!include " + pumpath + "/pumla_macros.puml\n\n"
+    dtxt = dtxt + "scale 0.5\n\n"
     dtxt = dtxt + "PUMLAPutAllElements()\nPUMLAPutAllStaticRelations()\n\n"
     dtxt = dtxt + "@enduml\n\n"
 

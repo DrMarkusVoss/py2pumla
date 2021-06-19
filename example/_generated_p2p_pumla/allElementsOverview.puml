@@ -1,0 +1,11 @@
+@startuml
+!include modelrepo_json.puml
+!include /Users/mvoss/Desktop/git/github/pumla/pumla_macros.puml
+
+scale 0.5
+
+PUMLAPutAllElements()
+PUMLAPutAllStaticRelations()
+
+@enduml
+
