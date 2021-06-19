@@ -168,8 +168,8 @@ def py2pumla(fname, targetpath):
     spec.loader.exec_module(mod)
     d = mod.__dict__
     keys = d.keys()
-    #print("after exec")
-    #print(keys)
+    print("after exec")
+    print(keys)
     mod_els = []
     module_element_alias = []
     module_funcs = []
@@ -181,7 +181,7 @@ def py2pumla(fname, targetpath):
         if not "__" in e:
             mod_els.append(d[e])
 
-    #print(mod_els)
+    print(mod_els)
 
     mymod_uses = ""
     mymod_func = ""
@@ -196,6 +196,7 @@ def py2pumla(fname, targetpath):
         elif (inspect.ismodule(me)):
             #print(me)
             #print("... is a module used.")
+            # TODO: USES MODULE (import <mods>)
             pass
 
         elif (inspect.isfunction(me)):
