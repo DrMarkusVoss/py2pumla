@@ -1,5 +1,6 @@
 #!/usr/bin/python
-"""Command Line Tool and PUMLA hook for processing
+"""
+Command Line Tool and PUMLA hook for processing
 python files and producing PUMLA conformant
 PlantUML models of it.
 """
@@ -48,7 +49,7 @@ def createClassPUMLCode(classelement, targetpath):
             me_name = me
             #print(me)
             me_raw = classelement.__dict__[me]
-            me_args = me_raw.__code__.co_varnames
+            me_args = me_raw.__code__.co_varnames[0:(me_raw.__code__.co_argcount)]
             ltw = ltw + "\t+" + me_name + str(me_args).replace("'", "").replace(",)", ")") + "\n"
 
     ltw = ltw + "!endif\n"
@@ -89,7 +90,7 @@ def createModuleFunctionsPUMLCode(module, modulefuncs, targetpath):
     for mf in modulefuncs:
 
         me_name = mf.__name__
-        me_args = mf.__code__.co_varnames
+        me_args = mf.__code__.co_varnames[0:(mf.__code__.co_argcount)]
         ltw = ltw + "\t+" + str(me_name) + str(me_args).replace("'", "").replace(",)", ")") + "\n"
 
 
@@ -222,7 +223,7 @@ def py2pumla(fname, targetpath):
 
 
 def findPythonFiles(path):
-    """" find all pumla files in given path """
+    """ find all pumla files in given path """
     pythonfiles = []
     blacklist = []
 
